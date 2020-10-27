@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo Rectangle</title>
+    <script src="Rectangle.js"></script>
+</head>
+<body>
+<input type="number" id="rect-width" placeholder="Input Width here...">
+<input type="number" id="rect-height" placeholder="Input Height here...">
+<button onclick="showArea()">Show Area</button>
+<button onclick="showPerimeter()">Show Perimeter</button>
+<p id="result"></p>
+<canvas id="myCanvas" width="500" height="500"></canvas>
+
+<script>
+    let w = document.getElementById('rect-width');
+    let h = document.getElementById('rect-height');
+    function showArea() {
+        let rect = new Rectangle(w.value,h.value);
+        let result = rect.getArea();
+        showResult(result);
+        drawRect(rect);
+    }
+
+    function showPerimeter() {
+        let rect = new Rectangle(w.value,h.value);
+        let result = rect.getPerimeter();
+        showResult(result);
+        drawRect(rect);
+    }
+
+    function showResult(result) {
+        document.getElementById('result').innerHTML = 'Result: '+ result;
+    }
+
+    function drawRect(rect) {
+        let canvas = document.getElementById('myCanvas');
+        rect.draw(canvas);
+    }
+</script>
+</body>
+</html>
